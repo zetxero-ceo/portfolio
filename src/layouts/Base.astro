@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'เว็บไซต์ส่วนตัว แนะนำตัว และผลงาน' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const nav = [
+  { href: `${base}/`, label: 'หน้าแรก' },
+  { href: `${base}/work/`, label: 'ผลงาน' },
+  { href: `${base}/about/`, label: 'เกี่ยวกับ' },
+  { href: `${base}/contact/`, label: 'ติดต่อ' },
+];
+---
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={`${base}/`}>ลิก</a>
+      <nav>
+        {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">© {new Date().getFullYear()} สหรัฐ ยกทวน</footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5f6368;
+    --line: #e3e3e3;
+    --accent: #2f5bea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --fg: #ececec;
+      --muted: #a0a4a8;
+      --line: #2c2c2c;
+      --accent: #7c9bff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, 'Noto Sans Thai', 'Segoe UI', sans-serif;
+    line-height: 1.7;
+  }
+  a { color: var(--accent); }
+  .site-header, main, .site-footer { max-width: 56rem; margin: 0 auto; padding: 1rem 1rem; }
+  .site-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: .5rem; }
+  .brand { font-weight: 700; font-size: 1.2rem; color: var(--fg); text-decoration: none; }
+  nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+  nav a { color: var(--fg); text-decoration: none; }
+  nav a:hover { color: var(--accent); }
+  .site-footer { color: var(--muted); border-top: 1px solid var(--line); margin-top: 3rem; font-size: .9rem; }
+  h1 { line-height: 1.25; }
+  .muted { color: var(--muted); }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); padding: 0; list-style: none; }
+  .card { border: 1px solid var(--line); border-radius: .5rem; padding: 1rem; }
+  .card h3 { margin: .25rem 0; }
+  .tag { font-size: .8rem; color: var(--muted); }
+  .video { position: relative; aspect-ratio: 16 / 9; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
