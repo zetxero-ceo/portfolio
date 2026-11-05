@@ -4,14 +4,14 @@ import WorkCard from '../components/WorkCard.astro';
 import { works } from '../data/work';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<Base title="ลิก | เว็บไซต์ส่วนตัว">
+<Base title="สหรัฐ ยกทวน (ลิก) | เว็บไซต์ส่วนตัว" description="สหรัฐ ยกทวน (ลิก) นักเขียนโค้ดฝึกหัด เปิดรับโอกาสนักพัฒนาระดับจูเนียร์">
   <section>
-    <h1>สวัสดีครับ ผมลิก</h1>
-    <p>ข้อความแนะนำตัวสั้นๆ (ตัวอย่าง) — ผมทำงานด้านดีไซน์ โค้ด และวิดีโอ</p>
+    <h1>สวัสดีครับ ผมสหรัฐ (ลิก)</h1>
+    <p>นักเขียนโค้ดฝึกหัด อายุ 22 ปี คนไทย กำลังเรียน Python และ AI และเปิดรับโอกาสนักพัฒนาระดับจูเนียร์</p>
     <p><a href={`${base}/about/`}>รู้จักผมมากขึ้น</a> · <a href={`${base}/contact/`}>ติดต่อ</a></p>
   </section>
   <section>
-    <h2>ผลงานเด่น</h2>
+    <h2>ผลงาน</h2>
     <ul class="grid">
       {works.slice(0, 6).map((w) => <WorkCard work={w} />)}
     </ul>
