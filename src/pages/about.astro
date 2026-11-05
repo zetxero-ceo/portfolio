@@ -5,15 +5,17 @@ import { works } from '../data/work';
 const tech = [...new Set(works.flatMap((w) => w.tech))];
 ---
 <Base title="เกี่ยวกับ | สหรัฐ ยกทวน (ลิก)">
-  <h1>เกี่ยวกับผม</h1>
-  <p>
-    ผมชื่อ <strong>สหรัฐ ยกทวน</strong> ชื่อเล่น <strong>ลิก</strong> อายุ 22 ปี คนไทย
-    เป็นนักเขียนโค้ดฝึกหัด กำลังเรียนรู้ Python และ AI และเปิดรับโอกาสนักพัฒนาระดับจูเนียร์
-  </p>
+  <h1><span class="grad">เกี่ยวกับผม</span></h1>
+  <div class="panel reveal">
+    <p>
+      ผมชื่อ <strong>สหรัฐ ยกทวน</strong> ชื่อเล่น <strong>ลิก</strong> อายุ 22 ปี คนไทย
+      เป็นนักเขียนโค้ดฝึกหัด กำลังเรียนรู้ Python และ AI และเปิดรับโอกาสนักพัฒนาระดับจูเนียร์
+    </p>
+  </div>
   <h2>งานอดิเรก</h2>
-  <p>เขียนโค้ด อ่านหนังสือ เล่นเกม</p>
+  <ul class="chips big reveal"><li>เขียนโค้ด</li><li>อ่านหนังสือ</li><li>เล่นเกม</li></ul>
   <h2>คติประจำใจ</h2>
-  <p>อย่ายอมแพ้</p>
+  <div class="panel reveal"><p class="lead"><span class="grad">“อย่ายอมแพ้”</span></p></div>
   <h2>เทคโนโลยีที่ใช้ในผลงาน</h2>
-  <p>{tech.join(' · ')}</p>
+  <ul class="chips big reveal">{tech.map((t) => <li>{t}</li>)}</ul>
 </Base>

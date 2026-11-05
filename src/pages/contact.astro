@@ -41,12 +41,12 @@ const groups = [
 ];
 ---
 <Base title="ติดต่อ | ลิก">
-  <h1>ติดต่อ</h1>
+  <h1><span class="grad">ติดต่อ</span></h1>
   <p class="muted">ทักมาได้ตามช่องทางที่สะดวกครับ</p>
   {groups.map((g) => (
     <section>
       <h2>{g.title}</h2>
-      <ul>
+      <ul class="chips big reveal">
         {g.items.map((i) => (
           <li>
             <a href={i.href} rel="noopener noreferrer" target={i.href.startsWith('mailto:') ? undefined : '_blank'}>{i.label}</a>

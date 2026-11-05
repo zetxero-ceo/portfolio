@@ -8,7 +8,7 @@ const groups = (Object.keys(categoryLabel) as (keyof typeof categoryLabel)[])
   .filter((g) => g.items.length > 0);
 ---
 <Base title="ผลงาน | ลิก">
-  <h1>ผลงาน</h1>
+  <h1><span class="grad">ผลงาน</span></h1>
   {groups.map((g) => (
     <section>
       <h2>{g.label}</h2>

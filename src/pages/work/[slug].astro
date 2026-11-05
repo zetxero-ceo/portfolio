@@ -10,8 +10,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <Base title={`${work.title} | ลิก`} description={work.summary}>
   <p><a href={`${base}/work/`}>← ผลงานทั้งหมด</a></p>
   <span class="tag">{categoryLabel[work.category]}</span>
-  <h1>{work.title}</h1>
-  <p>{work.summary}</p>
+  <h1><span class="grad">{work.title}</span></h1>
+  <p class="lead">{work.summary}</p>
   {work.youtubeId && (
     <div class="video">
       <iframe
@@ -23,12 +23,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   )}
   <h2>บทบาทของผม</h2>
-  <p>{work.role}</p>
+  <div class="panel reveal"><p>{work.role}</p></div>
   <h2>เทคโนโลยี</h2>
-  <p>{work.tech.join(' · ')}</p>
+  <ul class="chips big reveal">{work.tech.map((t) => <li>{t}</li>)}</ul>
   <h2>ลิงก์</h2>
-  <ul>
-    {work.liveUrl && <li><a href={work.liveUrl} target="_blank" rel="noopener noreferrer">ดูเว็บจริง</a></li>}
-    <li><a href={work.repo} target="_blank" rel="noopener noreferrer">โค้ดบน GitHub</a></li>
-  </ul>
+  <div class="actions reveal">
+    {work.liveUrl && <a class="btn primary" href={work.liveUrl} target="_blank" rel="noopener noreferrer">ดูเว็บจริง</a>}
+    <a class="btn" href={work.repo} target="_blank" rel="noopener noreferrer">โค้ดบน GitHub</a>
+  </div>
 </Base>
