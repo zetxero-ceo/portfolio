@@ -3,18 +3,32 @@ import Base from '../layouts/Base.astro';
 import WorkCard from '../components/WorkCard.astro';
 import { works } from '../data/work';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const words = ['เว็บแอป', 'ระบบจัดการสต็อก', 'บอท Telegram และ Discord', 'แอปบันทึกรายรับ-รายจ่าย'];
+const live = works.filter((w) => w.liveUrl).length;
 ---
-<Base title="ลิก | เว็บไซต์ส่วนตัว">
-  <section>
-    <h1>สวัสดีครับ ผมลิก</h1>
-    <p>ข้อความแนะนำตัวสั้นๆ (ตัวอย่าง) — ผมทำงานด้านดีไซน์ โค้ด และวิดีโอ</p>
-    <p><a href={`${base}/about/`}>รู้จักผมมากขึ้น</a> · <a href={`${base}/contact/`}>ติดต่อ</a></p>
+<Base title="สหรัฐ ยกทวน (ลิก) | เว็บไซต์ส่วนตัว" description="สหรัฐ ยกทวน (ลิก) นักเขียนโค้ดฝึกหัด เปิดรับโอกาสนักพัฒนาระดับจูเนียร์">
+  <section class="hero">
+    <p class="badge"><span class="dot"></span> เปิดรับโอกาสนักพัฒนาระดับจูเนียร์</p>
+    <h1>สวัสดีครับ ผม<br /><span class="grad">สหรัฐ ยกทวน (ลิก)</span></h1>
+    <p class="lead">
+      นักเขียนโค้ดฝึกหัดที่ชอบสร้าง <span class="typed" data-words={JSON.stringify(words)}>{words[0]}</span><span class="caret" aria-hidden="true"></span>
+    </p>
+    <p class="muted">อายุ 22 ปี คนไทย · กำลังเรียนรู้ Python และ AI</p>
+    <div class="actions">
+      <a class="btn primary" href={`${base}/work/`}>ดูผลงาน</a>
+      <a class="btn" href={`${base}/contact/`}>ติดต่อ</a>
+    </div>
+    <ul class="stats">
+      <li><b>{works.length}</b><span>ผลงาน</span></li>
+      <li><b>{live}</b><span>เว็บที่ใช้งานจริง</span></li>
+      <li><b>22</b><span>ปี</span></li>
+    </ul>
   </section>
   <section>
-    <h2>ผลงานเด่น</h2>
+    <h2>ผลงาน</h2>
     <ul class="grid">
       {works.slice(0, 6).map((w) => <WorkCard work={w} />)}
     </ul>
-    <p><a href={`${base}/work/`}>ดูผลงานทั้งหมด →</a></p>
+    <p class="reveal"><a href={`${base}/work/`}>ดูผลงานทั้งหมด →</a></p>
   </section>
 </Base>

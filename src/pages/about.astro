@@ -1,13 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
+import { works } from '../data/work';
+// รวมเทคโนโลยีจากผลงานจริง (ไม่ซ้ำ)
+const tech = [...new Set(works.flatMap((w) => w.tech))];
 ---
-<Base title="เกี่ยวกับ | ลิก">
-  <h1>เกี่ยวกับผม</h1>
-  <p>ข้อความตัวอย่าง — แก้เป็นเรื่องราวของลิก: เป็นใคร ทำอะไร สนใจอะไร</p>
-  <h2>ทักษะ</h2>
-  <ul>
-    <li>ดีไซน์ (ใส่รายละเอียดจริง)</li>
-    <li>โค้ด (ใส่รายละเอียดจริง)</li>
-    <li>วิดีโอ (ใส่รายละเอียดจริง)</li>
-  </ul>
+<Base title="เกี่ยวกับ | สหรัฐ ยกทวน (ลิก)">
+  <h1><span class="grad">เกี่ยวกับผม</span></h1>
+  <div class="panel reveal">
+    <p>
+      ผมชื่อ <strong>สหรัฐ ยกทวน</strong> ชื่อเล่น <strong>ลิก</strong> อายุ 22 ปี คนไทย
+      เป็นนักเขียนโค้ดฝึกหัด กำลังเรียนรู้ Python และ AI และเปิดรับโอกาสนักพัฒนาระดับจูเนียร์
+    </p>
+  </div>
+  <h2>งานอดิเรก</h2>
+  <ul class="chips big reveal"><li>เขียนโค้ด</li><li>อ่านหนังสือ</li><li>เล่นเกม</li></ul>
+  <h2>คติประจำใจ</h2>
+  <div class="panel reveal"><p class="lead"><span class="grad">“อย่ายอมแพ้”</span></p></div>
+  <h2>เทคโนโลยีที่ใช้ในผลงาน</h2>
+  <ul class="chips big reveal">{tech.map((t) => <li>{t}</li>)}</ul>
 </Base>

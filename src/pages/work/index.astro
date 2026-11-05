@@ -2,22 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import { works, categoryLabel } from '../../data/work';
-const groups = (Object.keys(categoryLabel) as (keyof typeof categoryLabel)[]).map((key) => ({
-  key,
-  label: categoryLabel[key],
-  items: works.filter((w) => w.category === key),
-}));
+// แสดงเฉพาะหมวดที่มีผลงาน (หมวดดีไซน์/วิดีโอจะโผล่เองเมื่อเพิ่มผลงานใน work.ts)
+const groups = (Object.keys(categoryLabel) as (keyof typeof categoryLabel)[])
+  .map((key) => ({ key, label: categoryLabel[key], items: works.filter((w) => w.category === key) }))
+  .filter((g) => g.items.length > 0);
 ---
 <Base title="ผลงาน | ลิก">
-  <h1>ผลงาน</h1>
+  <h1><span class="grad">ผลงาน</span></h1>
   {groups.map((g) => (
     <section>
       <h2>{g.label}</h2>
-      {g.items.length ? (
-        <ul class="grid">{g.items.map((w) => <WorkCard work={w} />)}</ul>
-      ) : (
-        <p class="muted">ยังไม่มีผลงานในหมวดนี้</p>
-      )}
+      <ul class="grid">{g.items.map((w) => <WorkCard work={w} />)}</ul>
     </section>
   ))}
 </Base>
