@@ -1,12 +1,60 @@
 ---
 import Base from '../layouts/Base.astro';
+
+// ช่องทางติดต่อ — แก้/เพิ่ม/ลบได้ที่นี่
+const groups = [
+  {
+    title: 'สายงาน',
+    items: [
+      { label: 'อีเมล', href: 'mailto:saharatyokthuan@gmail.com', text: 'saharatyokthuan@gmail.com' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/saharat-yokthuan-070080414' },
+      { label: 'GitHub', href: 'https://github.com/saharatyokthuan' },
+    ],
+  },
+  {
+    title: 'แชท',
+    items: [
+      { label: 'LINE', href: 'https://line.me/ti/p/~saharat_yok' },
+      { label: 'Discord', href: 'https://discord.com/users/743280483462283344' },
+      { label: 'Telegram', href: 'https://t.me/saharatyok' },
+    ],
+  },
+  {
+    title: 'โซเชียลมีเดีย',
+    items: [
+      { label: 'Facebook', href: 'https://www.facebook.com/share/1FNdtHvx4F/' },
+      { label: 'Instagram', href: 'https://www.instagram.com/shrt_ykk.56' },
+      { label: 'X', href: 'https://x.com/itsmelik_yok' },
+      { label: 'Threads', href: 'https://www.threads.com/@shrt_ykk.56' },
+      { label: 'TikTok', href: 'https://www.tiktok.com/@saharat_cc' },
+      { label: 'YouTube', href: 'https://www.youtube.com/@saharat29lik' },
+    ],
+  },
+  {
+    title: 'บทความและชุมชนนักพัฒนา',
+    items: [
+      { label: 'Medium', href: 'https://medium.com/@saharatyokthuan' },
+      { label: 'dev.to', href: 'https://dev.to/saharatyokthuan' },
+      { label: 'Stack Overflow', href: 'https://stackoverflow.com/users/33244558/saharat-yokthuan?tab=profile' },
+    ],
+  },
+];
 ---
 <Base title="ติดต่อ | ลิก">
   <h1>ติดต่อ</h1>
-  <p>ช่องทางติดต่อ (ตัวอย่าง — ใส่ของจริง)</p>
-  <ul>
-    <li>อีเมล: your-email@example.com</li>
-    <li><a href="https://github.com/">GitHub</a></li>
-  </ul>
-  <p class="muted">หมายเหตุ: ยังไม่มีฟอร์มติดต่อ จึงไม่ได้เก็บข้อมูลผู้เข้าชม (ลดภาระ PDPA)</p>
+  <p class="muted">ทักมาได้ตามช่องทางที่สะดวกครับ</p>
+  {groups.map((g) => (
+    <section>
+      <h2>{g.title}</h2>
+      <ul>
+        {g.items.map((i) => (
+          <li>
+            <a href={i.href} rel="noopener noreferrer" target={i.href.startsWith('mailto:') ? undefined : '_blank'}>{i.label}</a>
+            {i.text && <span class="muted"> — {i.text}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <p class="muted">หมายเหตุ: เว็บนี้ไม่มีฟอร์มติดต่อ จึงไม่เก็บข้อมูลของผู้เข้าชม</p>
 </Base>
